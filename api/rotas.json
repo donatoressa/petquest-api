@@ -1,0 +1,24 @@
+{
+    "rotas": [
+        {
+            "api": "./api/autenticar",
+            "verbo": "post",
+            "caminho": "/autenticar"
+        },
+        {
+            "api": "./api/obter-evento",
+            "verbo": "get",
+            "caminho": "/obter-evento"
+        },
+        {
+            "api": "./api/incluir-evento",
+            "verbo": "post",
+            "caminho": "/incluir-evento"
+        },
+        {
+            "api": "./api/atualizar-evento",
+            "verbo": "post",
+            "caminho": "/atualizar-evento"
+        }
+    ]
+}

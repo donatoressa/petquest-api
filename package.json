@@ -1,0 +1,21 @@
+{
+  "name": "petquest-api",
+  "version": "1.0.0",
+  "description": "Projeto de APIs da aplicação petquest",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "petquest-api"
+  },
+  "author": "Donato Ressa",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "express": "^4.15.2",
+    "firebase": "^3.9.0",
+    "fs": "0.0.1-security"
+  }
+}
