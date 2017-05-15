@@ -1,8 +1,10 @@
 {
     "configuracao": {
-        "apiKey": "AIzaSyANsnXHNVduNkbQitcMDtyagm6u1vLrags",
-        "authDomain": "petquest.firebaseapp.com",
-        "databaseURL": "https://petquest-70299.firebaseio.com/",
-        "storageBucket": ""
+        "apiKey": "AIzaSyDHvDDtVVcPH31kw6f7UduUcg-DrUNjQ4k",
+        "authDomain": "petquest-api.firebaseapp.com",
+        "databaseURL": "https://petquest-api.firebaseio.com",
+        "projectId": "petquest-api",
+        "storageBucket": "petquest-api.appspot.com",
+        "messagingSenderId": "109196666113"
     }
 }

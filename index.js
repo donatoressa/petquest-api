@@ -12,8 +12,6 @@ function run(app) {
   
   var config = JSON.parse(fs.readFileSync("./firebase-db-config.json")).configuracao;
   firebase.initializeApp(config);
-  var database = firebase.database();
-  console.log("Database petquest-70299 inicializado.");
 
   var configuracao = JSON.parse(fs.readFileSync("./api/rotas.json")).rotas;
 
@@ -25,7 +23,7 @@ function run(app) {
 
     app[verbo](caminho, api.findAll);
 
-    console.log("Carregando API '" + caminho + "'");
+    console.log("API '" + caminho + "' inicializada.");
   }
 
 

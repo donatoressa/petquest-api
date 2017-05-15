@@ -1,30 +1,19 @@
 var firebase = require("firebase");
 
-var db = firebase.database();
-
 function autenticar(req, res) {
 
     var usuario = req.body.usuario;
     var password = req.body.senha;
-    
-    var cadastro = firebase.database().ref('/users/' + usuario);//.then(auth);
-    cadastro.on("value", auth);
-    
-    function auth(snapshot) {
-            var senha = snapshot.val().senha;
-            if(senha === password){
-                res.send({
-                    statusAutenticacao: "sucesso",
-                    msgAutenticacao: "Usuário logado com sucesso."
-                });
-            }
-            else{
-                res.send({
-                    statusAutenticacao: "erro",
-                    msgAutenticacao: "Erro ao autenticar usuário."
-                });
-            }
-        }
-    }
+    var autenticador = firebase.auth();
+    autenticador.signInWithEmailAndPassword(usuario, password)
+        .then(function (dado) {
+            res.send(200,"Usuário autenticado com sucesso!");
+        })
+        .catch(function (error) {
+            var errorCode = error.code;
+            var errorMessage = error.message;
+            res.send(403,{ erro: errorCode, msg: errorMessage });
+        });
+}
 
-    exports.findAll = autenticar;
+exports.findAll = autenticar;

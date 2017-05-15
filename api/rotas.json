@@ -19,6 +19,11 @@
             "api": "./api/atualizar-evento",
             "verbo": "post",
             "caminho": "/atualizar-evento"
+        },
+        {
+            "api": "./api/registrar-usuario",
+            "verbo": "post",
+            "caminho": "/registrar-usuario"
         }
     ]
 }
