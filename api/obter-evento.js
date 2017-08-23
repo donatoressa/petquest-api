@@ -1,5 +1,8 @@
 function obterEvento(req, res){
-    res.send([{ teste: "x" }]);
+
+    var evento = req.body.evento;
+
+    res.status(200).send([{ teste: "x" }]);
 }
 
 exports.findAll = obterEvento;

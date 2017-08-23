@@ -7,12 +7,12 @@ function registrarUsuario(req, res) {
 
     firebase.auth().createUserWithEmailAndPassword(email, password)
         .then(function (dado) {
-            res.send(200, "Usuário registrado com sucesso!");
+            res.status(200).send({mensagem: "Usuário registrado com sucesso!"});
         })
         .catch(function (error) {
             var errorCode = error.code;
             var errorMessage = error.message;
-            res.send(500, {code: errorCode, mensagem: errorMessage});
+            res.status(500).send({code: errorCode, mensagem: errorMessage});
         });
 }
 
