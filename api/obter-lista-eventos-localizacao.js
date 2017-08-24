@@ -1,13 +1,14 @@
-function obterEvento(req, res){
+var firebase = require("firebase");
+var database = firebase.database();
+
+function obterListaEventosLocalizacao(req, res) {
 
     var body = {
-        tipoEvento: req.body.tipoEvento,
-        animal: req.body.animal,
         latitude: req.body.latitude,
         longitude: req.body.longitude
     }
 
-   database.ref("eventos").once("value")
+    database.ref("eventos").once("value")
         .then(function (retorno) {
 
             var dados = filtrarEventos(retorno, body);
@@ -29,9 +30,7 @@ function filtrarEventos(dadosBD, payload) {
     var saida = [];
     forEach(evento in dadosBD, function(){
         if (evento.latitude === payload.latitude &&
-            evento.longitude === payload.longitude &&
-            evento.tipoEvento === payload.tipoEvento &&
-            evento.animal === payload.animal) {
+            evento.longitude === payload.longitude) {
                 saida.push(evento);
         }
     });
@@ -39,4 +38,4 @@ function filtrarEventos(dadosBD, payload) {
     return saida;
 }
 
-exports.findAll = obterEvento;
+exports.findAll = obterListaEventosLocalizacao;

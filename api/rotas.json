@@ -11,6 +11,11 @@
             "caminho": "/obter-evento"
         },
         {
+            "api": "./api/obter-lista-eventos-localizacao",
+            "verbo": "post",
+            "caminho": "/obter-lista-eventos-localizacao"
+        },
+        {
             "api": "./api/incluir-evento",
             "verbo": "post",
             "caminho": "/incluir-evento"
