@@ -5,10 +5,12 @@ function atualizarEvento(req, res) {
 
     var body = {
         tipoEvento: req.body.tipoEvento,
-        animal: req.body.animal
+        animal: req.body.animal,
+        latitude: req.body.latitude,
+        longitude: req.body.longitude
     }
 
-    database.ref("eventos").push(body)
+    database.ref("eventos").update(body)
         .then(function () {
             res.status(200).send(body);
         })
