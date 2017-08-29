@@ -11,13 +11,13 @@ function obterEvento(req, res){
         .then(function (retorno) {
 
             var dados = filtrarEventos(retorno, body);
-            res.status(200).send({
+            res.send(200,{
                 codigo: 200,
                 eventos: dados
             });
         })
         .catch(function (erro) {
-            res.status(500).send({
+            res.send(500,{
                 codigo: 500,
                 mensagem: erro
             });

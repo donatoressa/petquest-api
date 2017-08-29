@@ -10,10 +10,10 @@ function incluirEvento(req, res) {
 
     database.ref("eventos").push(body)
         .then(function () {
-            res.status(200).send(body);
+            res.send(200,body);
         })
         .catch(function (erro) {
-            res.status(500).send({
+            res.send(500,{
                 codigo: 500,
                 mensagem: erro
             });
