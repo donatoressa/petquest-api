@@ -6,6 +6,11 @@
             "caminho": "/autenticar"
         },
         {
+            "api": "./api/autenticar-facebook",
+            "verbo": "get",
+            "caminho": "/autenticar-facebook"
+        },
+        {
             "api": "./api/obter-evento",
             "verbo": "get",
             "caminho": "/obter-evento"
