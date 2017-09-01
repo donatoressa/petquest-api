@@ -7,7 +7,7 @@ function registrarUsuario(req, res) {
     console.log("[API] registrarUsuario | payload: "+ JSON.stringify(req.body));
     var email = req.body.email;
     var password = req.body.senha;
-
+    
     firebase.auth().createUserWithEmailAndPassword(email, password)
         .then(function (dado) {
             console.log("[API] registrarUsuario | executada com sucesso");

@@ -3,27 +3,26 @@ var database = firebase.database();
 
 function obterListaEventosLocalizacao(req, res) {
 
+    console.log("[API] obterListaEventosLocalizacao | iniciada");
+    console.log("[API] obterListaEventosLocalizacao | payload: " + JSON.stringify(req.body));
     var body = {
         latitude: req.body.latitude,
         longitude: req.body.longitude
     }
 
     var eventosRef = database.ref("eventos");
-    eventosRef.once("value")
-        .then(function (snapshot) {
-            snapshot.forEach(function (childSnap) {
-                var dados = filtrarEventos(childSnap, body);
-                res.send(200, {
-                    codigo: 200,
-                    eventos: dados
-                });
-            })
-        })
-        .catch(function (erro) {
-            res.send(500, {
-                codigo: 500,
-                mensagem: "Erro ao obter eventos próximos."
+    eventosRef.on("value", function (snapshot) {
+            var dados = [];
+            snapshot.forEach(function (child){
+                var item = child.val();
+                item.key = child.key;
+                dados.push(item);
             });
+            var resposta = [];
+            resposta = filtrarEventos(dados, body);
+
+            console.log("[API] obterListaEventosLocalizacao | executada com sucesso");
+            res.status(200).send({ codigo: 200, eventos: resposta });
         });
 }
 
@@ -45,12 +44,16 @@ function calcularDistanciaEvento(evento, posicaoAtual) {
     return parseFloat((Math.round(g) / 1000).toFixed(2));
 }
 
+
+
 function filtrarEventos(dadosBD, payload) {
 
     var saida = [];
-
+    console.log("dadosBD: "+ JSON.stringify(dadosBD));
     dadosBD.forEach(function (evento) {
         var distancia = calcularDistanciaEvento(evento, payload);
+        console.log("distancia: "+ distancia);
+        //Tratar distancia minima para exibição
         evento.distanciaPosicaoAtual = distancia;
         saida.push(evento);
     });
