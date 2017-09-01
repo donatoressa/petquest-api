@@ -4,7 +4,7 @@
   "description": "Projeto de APIs da aplicação petquest",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "debug": "node --nolazy --debug-brk=5858 index.js"
   },
   "repository": {
     "type": "git",

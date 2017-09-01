@@ -2,7 +2,7 @@ var firebase = require("firebase");
 
 function autenticar(req, res) {
 
-    var usuario = req.body.usuario;
+    var usuario = req.body.email;
     var password = req.body.senha;
     var autenticador = firebase.auth();
     autenticador.signInWithEmailAndPassword(usuario, password)
