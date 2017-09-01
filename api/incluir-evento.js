@@ -3,8 +3,8 @@ var eventosRef = firebase.database().ref("eventos");
 
 function incluirEvento(req, res) {
     var body = {
-        tipoEvento: req.body.tipoEvento,
-        animal: req.body.animal,
+        tipoEvento: req.body.tipoEvento, //1 - PERDIDO ; 2 - ACHADO
+        tipoAnimal: req.body.animal, // 1 - CACHORRO; 2 - GATO ; 3 - OUTRO
         latitude: req.body.latitude,
         longitude: req.body.longitude
     }

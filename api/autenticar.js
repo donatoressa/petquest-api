@@ -1,18 +1,23 @@
 var firebase = require("firebase");
+var interceptadorHTTP = require("../comum/interceptadorHTTP.js");
 
 function autenticar(req, res) {
+
+    console.log("[API] autenticar | iniciada");
+    console.log("[API] autenticar | payload: "+ JSON.stringify(req.body));
 
     var usuario = req.body.email;
     var password = req.body.senha;
     var autenticador = firebase.auth();
     autenticador.signInWithEmailAndPassword(usuario, password)
         .then(function (dado) {
-            res.send(200,"Usuário autenticado com sucesso!");
+            console.log("[API] autenticar | executada com sucesso");
+            res.status(200).send({ codigo: "200", mensagem: "Usuário autenticado com sucesso!"});
         })
-        .catch(function (error) {
-            var errorCode = error.code;
-            var errorMessage = error.message;
-            res.send(403,{ erro: errorCode, msg: errorMessage });
+        .catch(function (erro_) {
+            console.log("[API] autenticar | executada com falha");
+            var erro = interceptadorHTTP(erro_);
+            res.status(erro.HTTPcode).send({ codigo: erro.code, mensagem: erro.message });
         });
 }
 

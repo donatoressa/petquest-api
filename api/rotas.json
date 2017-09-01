@@ -34,6 +34,11 @@
             "api": "./api/registrar-usuario",
             "verbo": "post",
             "caminho": "/registrar-usuario"
+        },
+        {
+            "api": "./api/reset-senha",
+            "verbo": "post",
+            "caminho": "/reset-senha"
         }
     ]
 }

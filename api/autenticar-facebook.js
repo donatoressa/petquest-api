@@ -1,8 +1,6 @@
 var firebase = require("firebase");
 var fs = require("fs");
 var provider = new firebase.auth.FacebookAuthProvider();
-// var token = JSON.parse(fs.readFileSync("./key/fb-token.json")).chave;
-// var credential = firebase.auth.FacebookAuthProvider.credential(token);
 
 function autenticar(req, res) {
 

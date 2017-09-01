@@ -1,24 +1,23 @@
 var firebase = require("firebase");
+var interceptadorHTTP = require("../comum/interceptadorHTTP.js");
 
 function registrarUsuario(req, res) {
 
+    console.log("[API] registrarUsuario | iniciada");
+    console.log("[API] registrarUsuario | payload: "+ JSON.stringify(req.body));
     var email = req.body.email;
     var password = req.body.senha;
 
     firebase.auth().createUserWithEmailAndPassword(email, password)
         .then(function (dado) {
-            res.send(200,{
-                codigo: 200,
-                mensagem: "Usuário registrado com sucesso!"
-            });
+            console.log("[API] registrarUsuario | executada com sucesso");
+            res.status(200).send({ codigo: 200, mensagem: "Usuário registrado com sucesso!"});
         })
-        .catch(function (error) {
-            var errorCode = error.code;
-            var errorMessage = error.message;
-            res.send(500,{
-                codigo: errorCode, 
-                mensagem: errorMessage
-            });
+        .catch(function (erro_) {
+            console.log(erro_);
+            console.log("[API] registrarUsuario | executada com falha");
+            var erro = interceptadorHTTP(erro_);
+            res.status(erro.HTTPcode).send({codigo: erro.code, mensagem: erro.message});
         });
 }
 
