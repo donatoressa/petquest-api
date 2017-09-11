@@ -1,42 +1,42 @@
 {
     "rotas": [
         {
-            "api": "./api/autenticar",
+            "api": "./public/api/autenticar",
             "verbo": "post",
             "caminho": "/autenticar"
         },
         {
-            "api": "./api/autenticar-facebook",
+            "api": "./public/api/autenticar-facebook",
             "verbo": "get",
             "caminho": "/autenticar-facebook"
         },
         {
-            "api": "./api/obter-evento",
+            "api": "./public/api/obter-evento",
             "verbo": "get",
             "caminho": "/obter-evento"
         },
         {
-            "api": "./api/obter-lista-eventos-localizacao",
+            "api": "./public/api/obter-lista-eventos-localizacao",
             "verbo": "post",
             "caminho": "/obter-lista-eventos-localizacao"
         },
         {
-            "api": "./api/incluir-evento",
+            "api": "./public/api/incluir-evento",
             "verbo": "post",
             "caminho": "/incluir-evento"
         },
         {
-            "api": "./api/atualizar-evento",
+            "api": "./public/api/atualizar-evento",
             "verbo": "post",
             "caminho": "/atualizar-evento"
         },
         {
-            "api": "./api/registrar-usuario",
+            "api": "./public/api/registrar-usuario",
             "verbo": "post",
             "caminho": "/registrar-usuario"
         },
         {
-            "api": "./api/reset-senha",
+            "api": "./public/api/reset-senha",
             "verbo": "post",
             "caminho": "/reset-senha"
         }
