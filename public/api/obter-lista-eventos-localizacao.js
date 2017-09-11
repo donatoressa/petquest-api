@@ -11,19 +11,19 @@ function obterListaEventosLocalizacao(req, res) {
     }
 
     var eventosRef = database.ref("eventos");
-    eventosRef.on("value", function (snapshot) {
-            var dados = [];
-            snapshot.forEach(function (child){
-                var item = child.val();
-                item.key = child.key;
-                dados.push(item);
-            });
-            var resposta = [];
-            resposta = filtrarEventos(dados, body);
-
-            console.log("[API] obterListaEventosLocalizacao | executada com sucesso");
-            res.status(200).send({ codigo: 200, eventos: resposta });
+    eventosRef.once("value", function (snapshot) {
+        var dados = [];
+        snapshot.forEach(function (child) {
+            var item = child.val();
+            item.key = child.key;
+            dados.push(item);
         });
+        var resposta = [];
+        resposta = filtrarEventos(dados, body);
+
+        console.log("[API] obterListaEventosLocalizacao | executada com sucesso");
+        res.status(200).send({ codigo: 200, eventos: resposta });
+    });
 }
 
 /**
@@ -49,10 +49,10 @@ function calcularDistanciaEvento(evento, posicaoAtual) {
 function filtrarEventos(dadosBD, payload) {
 
     var saida = [];
-    console.log("dadosBD: "+ JSON.stringify(dadosBD));
+    console.log("dadosBD: " + JSON.stringify(dadosBD));
     dadosBD.forEach(function (evento) {
         var distancia = calcularDistanciaEvento(evento, payload);
-        console.log("distancia: "+ distancia);
+        console.log("distancia: " + distancia);
         //Tratar distancia minima para exibição
         evento.distanciaPosicaoAtual = distancia;
         saida.push(evento);

@@ -20,7 +20,7 @@ function run(app) {
   var config = JSON.parse(fs.readFileSync("./firebase-db-config.json")).configuracao;
   firebase.initializeApp(config);
 
-  var configuracao = JSON.parse(fs.readFileSync("./api/rotas.json")).rotas;
+  var configuracao = JSON.parse(fs.readFileSync("./public/api/rotas.json")).rotas;
 
   for (let i = 0; i < configuracao.length; i++) {
 
